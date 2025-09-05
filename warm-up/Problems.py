@@ -60,6 +60,14 @@ def second_largest_v2(arr):
       elif arr[i] > second_largest and arr[i] != largest:
          second_largest = arr[i]
    return second_largest
-
-print(second_largest_v2([10, 102, 233, 20, 12, 230]))
+# print(second_largest_v2([10, 102, 233, 20, 12, 230]))
 # print(second_largest([10, 102, 230, 20, 12, 230]))
+
+
+def print_start(n):
+   for i in range(n):
+      for j in range(n):
+         print("*", end=" ")
+      print('')
+
+print_start(4)
