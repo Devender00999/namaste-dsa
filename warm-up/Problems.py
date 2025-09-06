@@ -69,5 +69,12 @@ def print_start(n):
       for j in range(n):
          print("*", end=" ")
       print('')
+      
+def print_start(n):
+   for i in range(n):
+      row = " "
+      for j in range(n):
+         row = row + "* "
+      print(row)
 
 print_start(4)
