@@ -63,18 +63,18 @@ def second_largest_v2(arr):
 # print(second_largest_v2([10, 102, 233, 20, 12, 230]))
 # print(second_largest([10, 102, 230, 20, 12, 230]))
 
+# count digits of given number
+# Corner cases 
+# 1. num == 0
+# 2. num < 0
+def count_digits(num):
+   if num == 0: return 1
+   num = abs(num)
+   count = 0 
+   while num > 0:
+      num //= 10
+      count += 1
+      print(num)
+   return count
 
-def print_start(n):
-   for i in range(n):
-      for j in range(n):
-         print("*", end=" ")
-      print('')
-      
-def print_start(n):
-   for i in range(n):
-      row = " "
-      for j in range(n):
-         row = row + "* "
-      print(row)
-
-print_start(4)
+print(count_digits(-259))
