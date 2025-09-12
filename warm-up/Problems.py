@@ -77,4 +77,36 @@ def count_digits(num):
       print(num)
    return count
 
-print(count_digits(-259))
+def palindrome(num):
+   if num < 0:
+      return False
+   rev = 0
+   temp_num = 0
+   while num > 0:
+      last_digit = num % 10
+      rev = (rev * 10) + last_digit
+      num //= 10
+   
+   if rev == temp_num:
+      return True
+   return False
+
+def reverse(x):
+   rev = 0
+   x_copy = x
+   if x < 0:
+      x = abs(x)
+   while x > 0:
+      last_digit = x % 10
+      rev = (rev * 10) + last_digit
+      x = x // 10
+   if x_copy < 0:
+      return -rev
+   return rev
+
+print(reverse(1534236469))
+   
+
+
+
+# print(count_digits(-259))
