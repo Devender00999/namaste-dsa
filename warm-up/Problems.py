@@ -104,7 +104,19 @@ def reverse(x):
       return -rev
    return rev
 
-print(reverse(1534236469))
+def removeDuplicates(arr: list):
+   if len(arr) == 1: return
+   curr = 1
+   for i in range(0, len(arr)):
+      if arr[curr] < arr[i] and arr[curr] != arr[i]:
+         print(arr, curr, i)
+         arr[curr], arr[i] = arr[i], arr[curr]
+         curr += 1
+   return curr
+         
+   
+print(removeDuplicates([0,0,1,1,1, 2]))
+# print(reverse(1534236469))
    
 
 
