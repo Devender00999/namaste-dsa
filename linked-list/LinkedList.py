@@ -92,10 +92,31 @@ class MyLinkedList(object):
             curr.next = curr.next.next
         self.size -= 1
         
+    def middleNode(self, head):
+      slow = head 
+      fast = head
+      while fast != None and fast.next != None:
+         slow = slow.next
+         fast = fast.next.next
+      return slow
+        
 
 # Your MyLinkedList object will be instantiated and called as such:
-# obj = MyLinkedList()
-# param_1 = obj.get(index)
+obj = MyLinkedList()
+obj.addAtTail(1)
+obj.addAtTail(2)
+obj.addAtTail(3)
+obj.addAtTail(4)
+obj.addAtTail(5)
+obj.addAtTail(6)
+
+def print_linked_list(head: Node):
+   curr = head
+   while curr != None:
+      print(curr.val, end=" ")
+      curr = curr.next
+   print()
+print_linked_list(obj.middleNode(obj.head))
 # obj.addAtHead(val)
 # obj.addAtTail(val)
 # obj.addAtIndex(index,val)
