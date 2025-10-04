@@ -117,6 +117,40 @@ class MyLinkedList(object):
       if len(arr) % 2 != 0:
          curr = curr.next
       return curr
+   
+   def reverse_list(self, head):
+      prev = None
+      curr = head
+      while curr:
+         temp = curr.next
+         curr.next = prev
+         prev = curr
+         curr = temp
+      self.head = prev
+      
+   # T(n): O(n); S(n): O(n)
+   def hasCycleV2(self, head):
+      li = set()
+      curr = head
+      while curr:
+         if curr in li:
+               return True
+         li.add(curr)
+         curr = curr.next
+      return False
+   
+   # T(n): O(n); S(n): O(1)
+   def hasCycle(self, head):
+      slow = head
+      fast = head
+      while fast and fast.next:
+         slow = slow.next
+         fast = fast.next.next
+         if slow == fast:
+               return True
+      return False
+   
+   
 
 # Your MyLinkedList object will be instantiated and called as such:
 obj = MyLinkedList()
@@ -137,8 +171,13 @@ def print_linked_list(head: Node):
       curr = curr.next
    print()
    
-print_linked_list(obj.middleNode(obj.head))
-print_linked_list(obj.middle_node(obj.head))
+# print_linked_list(obj.middleNode(obj.head))
+
+print_linked_list(obj.head)
+obj.reverse_list(obj.head)
+print_linked_list(obj.head)
+
+
 # obj.addAtHead(val)
 # obj.addAtTail(val)
 # obj.addAtIndex(index,val)
