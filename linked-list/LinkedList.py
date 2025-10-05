@@ -150,6 +150,72 @@ class MyLinkedList(object):
                return True
       return False
    
+   # T(n): O(n); S(n): O(n)
+   def isPalindrome(self, head):
+      li = []
+      curr = head
+      while curr:
+         li.append(curr.val)
+         curr = curr.next
+      n = len(li)
+      for i in range(len(li) // 2):
+         if li[i] != li[n - i - 1]:
+               return False
+      return True
+
+   def print_linked_list(self, head: Node):
+      curr = head
+      while curr != None:
+         print(curr.val, end=" ")
+         curr = curr.next
+      print()
+   
+   def isPalindromeV2(self, head):
+      # find middle of the linked list
+      slow = head
+      fast = head
+      while fast and fast.next:
+         slow = slow.next
+         fast = fast.next.next
+      
+      # reversing the second half of the list
+      curr = slow
+      prev = None
+      while curr:
+         temp = curr.next
+         curr.next = prev
+         prev = curr
+         curr = temp
+      slow = prev
+      
+      # comparing first half and second half
+      curr = slow
+      curr1 = head
+      while curr:
+         if curr.val != curr1.val:
+            curr = slow
+            prev = None
+            while curr:
+               temp = curr.next
+               curr.next = prev
+               prev = curr
+               curr = temp
+            slow = prev
+            return False
+         curr = curr.next
+         curr1 = curr1.next
+         
+      curr = slow
+      prev = None
+      while curr:
+         temp = curr.next
+         curr.next = prev
+         prev = curr
+         curr = temp
+      slow = prev
+      
+      return True
+
    
 
 # Your MyLinkedList object will be instantiated and called as such:
@@ -157,12 +223,9 @@ obj = MyLinkedList()
 obj.addAtTail(1)
 obj.addAtTail(2)
 obj.addAtTail(3)
-obj.addAtTail(4)
-obj.addAtTail(5)
-obj.addAtTail(6)
-obj.addAtTail(7)
-obj.addAtTail(8)
-obj.addAtTail(9)
+obj.addAtTail(3)
+obj.addAtTail(2)
+obj.addAtTail(1)
 
 def print_linked_list(head: Node):
    curr = head
@@ -174,7 +237,8 @@ def print_linked_list(head: Node):
 # print_linked_list(obj.middleNode(obj.head))
 
 print_linked_list(obj.head)
-obj.reverse_list(obj.head)
+# obj.reverse_list(obj.head)
+print(obj.isPalindromeV2(obj.head))
 print_linked_list(obj.head)
 
 
