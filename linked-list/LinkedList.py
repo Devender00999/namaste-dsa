@@ -215,6 +215,57 @@ class MyLinkedList(object):
       slow = prev
       
       return True
+   
+   # T(n): O(n * m); S(n): O(1)
+   def getIntersectionNode(self, headA, headB):
+      """
+      :type head1, head1: ListNode
+      :rtype: ListNode
+      """
+      curr = headA
+      while curr:
+            curr2 = headB
+            while curr2:
+               if curr == curr2:
+                  return curr
+               curr2 = curr2.next
+            curr = curr.next
+      return None
+   
+   # T(n): O(n + m); S(n): O(n)
+   def getIntersectionNode(self, headA, headB):
+      """
+      :type head1, head1: ListNode
+      :rtype: ListNode
+      """
+      curr = headA
+      while curr.next:
+         curr2 = headB
+         while curr2:
+            if curr == curr2:
+               return curr
+            curr2 = curr2.next
+            
+         curr = curr.next
+      return None
+   
+   # T(n): O(n + m); S(n): O(n)
+   def getIntersectionNode(self, headA, headB):
+      """
+      :type head1, head1: ListNode
+      :rtype: ListNode
+      """
+      s = set()
+      curr = headA
+      while curr.next:
+         s.add(curr)
+         curr = curr.next
+      last = curr
+      curr = headB
+      while curr:
+         if last == curr:
+               return curr
+         curr = curr.next
 
    
 
