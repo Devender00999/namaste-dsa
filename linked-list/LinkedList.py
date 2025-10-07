@@ -266,6 +266,37 @@ class MyLinkedList(object):
          if last == curr:
                return curr
          curr = curr.next
+         
+         
+   # Given the head of a linked list and an integer val, 
+   # remove all the nodes of the linked list that has Node.val == val, and return the new head.
+   # T(n): O(n); S(n): O(1)
+   def removeElements(self, head, val):
+      prev = None
+      curr = head
+      while curr:
+         if curr.val == val:
+               print('Hi')
+               if prev is None:
+                  head = curr.next
+               else:
+                  prev.next = curr.next
+         else:
+               prev = curr
+         curr = curr.next
+      return head
+
+   # T(n): O(n); S(n): O(1)
+   def removeElementsV2(self, head, val):
+      sentiel = Node(0)
+      sentiel.next = head
+      prev = sentiel
+      while prev and prev.next:
+          if prev.next.val == val:
+              prev.next = prev.next.next
+          else:
+              prev = prev.next
+      return sentiel.next
 
    
 
@@ -291,7 +322,9 @@ print_linked_list(obj.head)
 # obj.reverse_list(obj.head)
 print(obj.isPalindromeV2(obj.head))
 print_linked_list(obj.head)
-
+# obj.print_linked_list(obj.head)
+# obj.removeElementsV2(obj.head, 1)
+print_linked_list(obj.head)
 
 # obj.addAtHead(val)
 # obj.addAtTail(val)
