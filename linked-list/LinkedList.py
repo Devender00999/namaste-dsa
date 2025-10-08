@@ -271,7 +271,7 @@ class MyLinkedList(object):
    # Given the head of a linked list and an integer val, 
    # remove all the nodes of the linked list that has Node.val == val, and return the new head.
    # T(n): O(n); S(n): O(1)
-   def removeElements(self, head, val):
+   def removeAllOccuranceOfElement(self, head, val):
       prev = None
       curr = head
       while curr:
@@ -287,7 +287,7 @@ class MyLinkedList(object):
       return head
 
    # T(n): O(n); S(n): O(1)
-   def removeElementsV2(self, head, val):
+   def removeAllOccuranceOfElementV2(self, head, val):
       sentiel = Node(0)
       sentiel.next = head
       prev = sentiel
@@ -297,6 +297,55 @@ class MyLinkedList(object):
           else:
               prev = prev.next
       return sentiel.next
+   
+   # Given the head of a linked list, remove the nth node from the end of the list and return its head.
+   # T(n): O(n); S(n): O(1)
+   def removeNthFromEnd(self, head, n):
+      """
+      :type head: Optional[ListNode]
+      :type n: int
+      :rtype: Optional[ListNode]
+      """
+      if n < 1:
+         return head
+      x = 0
+      curr =head
+      while curr:
+         x += 1
+         curr = curr.next
+      
+      curr = head
+      j = 0
+      if n == x:
+         head = head.next
+         return head
+      while curr and j < x - n - 1:
+         j += 1
+         curr = curr.next
+      if curr.next:
+         curr.next = curr.next.next
+      else:
+         head = head.next
+      return head
+   
+   # T(n): O(n); S(n): O(1)
+   def removeNthFromEnd(self, head, n):
+      sentinel = Node(0)
+      sentinel.next = head
+      
+      length = 0
+      curr = head
+      while curr:
+         curr = curr.next
+         length += 1
+      
+      prev = sentinel
+      prevPos = length - n
+      for i in range(prevPos):
+         prev = prev.next
+      prev.next = prev.next.next
+      return sentinel.next
+   
 
    
 
@@ -305,9 +354,8 @@ obj = MyLinkedList()
 obj.addAtTail(1)
 obj.addAtTail(2)
 obj.addAtTail(3)
-obj.addAtTail(3)
-obj.addAtTail(2)
-obj.addAtTail(1)
+obj.addAtTail(4)
+obj.addAtTail(5)
 
 def print_linked_list(head: Node):
    curr = head
@@ -318,13 +366,11 @@ def print_linked_list(head: Node):
    
 # print_linked_list(obj.middleNode(obj.head))
 
-print_linked_list(obj.head)
 # obj.reverse_list(obj.head)
-print(obj.isPalindromeV2(obj.head))
 print_linked_list(obj.head)
+print(print_linked_list(obj.removeNthFromEnd(obj.head, 0)))
 # obj.print_linked_list(obj.head)
 # obj.removeElementsV2(obj.head, 1)
-print_linked_list(obj.head)
 
 # obj.addAtHead(val)
 # obj.addAtTail(val)
