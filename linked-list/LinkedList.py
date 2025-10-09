@@ -328,8 +328,8 @@ class MyLinkedList(object):
          head = head.next
       return head
    
-   # T(n): O(n); S(n): O(1)
-   def removeNthFromEnd(self, head, n):
+   # T(n): O(n); S(n): O(1) (Two Pass)
+   def removeNthFromEndV2(self, head, n):
       sentinel = Node(0)
       sentinel.next = head
       
@@ -344,6 +344,24 @@ class MyLinkedList(object):
       for i in range(prevPos):
          prev = prev.next
       prev.next = prev.next.next
+      return sentinel.next
+
+   # T(n): O(n); S(n): O(1) (One Pass)
+   def removeNthFromEndV2(self, head, n):
+      sentinel = Node(0)
+      sentinel.next = head
+      
+      first = sentinel
+      second = sentinel
+
+      for i in range(n):
+         second = second.next
+      
+      while second and second.next:
+         first = first.next
+         second = second.next
+      
+      first.next = first.next.next
       return sentinel.next
    
 
