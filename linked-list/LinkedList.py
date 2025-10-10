@@ -363,6 +363,32 @@ class MyLinkedList(object):
       
       first.next = first.next.next
       return sentinel.next
+
+   # T(n): O(n): S(n): O(1)
+   def deleteDuplicates(self, head):
+      """
+      :type head: Optional[ListNode]
+      :rtype: Optional[ListNode]
+      """
+      curr = head
+      while curr and curr.next:
+         # Approach 1
+         if curr.val == curr.next.val:
+            curr.next = curr.next.next
+         else:
+            curr = curr.next
+
+      # Approach 2
+      # curr = head
+      # prev = head
+      # while curr and curr.next:
+      #    if prev.val != curr.next.val:
+      #          prev.next = curr.next
+      #          prev = curr.next
+      #    curr = curr.next
+      # if prev and prev.next:
+      #    prev.next = None
+      # return head
    
 
    
