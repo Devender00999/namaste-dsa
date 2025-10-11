@@ -390,6 +390,27 @@ class MyLinkedList(object):
       #    prev.next = None
       # return head
    
+   # Given the head of a singly linked list, group all the nodes with odd indices together followed by the nodes with even indices, and return the reordered list.
+   # T(n): O(n), S(n): O(n)
+   def oddEvenList(self, head):
+      """
+      :type head: Optional[ListNode]
+      :rtype: Optional[ListNode]
+      """
+      if not head or not head.next: return head
+      odd = head
+      even = head.next
+      evenStart = even
+      
+      while odd.next and even.next:
+            odd.next = odd.next.next
+            even.next = even.next.next
+            odd = odd.next
+            even = even.next
+      
+      odd.next = evenStart
+      return head
+   
 
    
 
