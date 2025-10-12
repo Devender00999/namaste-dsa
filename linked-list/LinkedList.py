@@ -411,6 +411,49 @@ class MyLinkedList(object):
       odd.next = evenStart
       return head
    
+   # You are given two non-empty linked lists representing two non-negative integers. 
+   # The digits are stored in reverse order, and each of their nodes contains a single digit. 
+   # Add the two numbers and return the sum as a linked list.
+
+   def addTwoNumbers(self, l1, l2):
+      """
+      :type l1: Optional[ListNode]
+      :type l2: Optional[ListNode]
+      :rtype: Optional[ListNode]
+      """
+      carry = 0
+      curr1 = l1
+      curr2 = l2
+      head = None
+      li = head
+      while curr1 and curr2:
+         s = curr1.val + curr2.val + carry
+         carry = 1 if s > 9 else 0
+         node = Node(s % 10)
+         if not head:
+               head = node
+               li = node
+         else:
+               li.next = node
+               li = li.next
+         curr1 = curr1.next
+         curr2 = curr2.next
+      curr1 = curr1 or curr2         
+      while curr1: 
+         s = curr1.val + carry
+         carry = 1 if s > 9 else 0
+         node = Node(s % 10)
+         li.next = node
+         li = li.next
+         curr1 = curr1.next
+      if carry:
+         node = Node(carry)
+         li.next = node
+      return head
+
+   
+
+   
 
    
 
