@@ -451,7 +451,30 @@ class MyLinkedList(object):
          li.next = node
       return head
 
-   
+   def addTwoNumbers(self, l1, l2):
+      """
+      :type l1: Optional[ListNode]
+      :type l2: Optional[ListNode]
+      :rtype: Optional[ListNode]
+      """
+      carry = 0
+      ans = Node(0)
+      head = ans
+      while l1 or l2 or carry:
+         currentSum = carry
+         if l1:
+               currentSum += l1.val
+               l1 = l1.next
+         if l2:
+               currentSum += l2.val
+               l2 = l2.next
+         carry = currentSum // 10
+         
+         node = Node(currentSum % 10)
+         ans.next = node
+         ans = ans.next
+
+      return head.next
 
    
 
