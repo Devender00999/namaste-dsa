@@ -475,6 +475,25 @@ class MyLinkedList(object):
          ans = ans.next
 
       return head.next
+   
+   # You are given the heads of two sorted linked lists list1 and list2.
+   # T(n): O(n); S(n): O(1)
+   def mergeTwoLists(self, list1, list2):
+      head = Node()
+      start = head
+      while list1 and list2:
+            if list1.val < list2.val:
+               head.next = list1
+               list1 = list1.next
+            else:
+               head.next = list2
+               list2 = list2.next
+            head = head.next
+      if list1:
+            head.next = list1
+      if list2:
+            head.next = list2
+      return start.next
 
    
 
