@@ -495,6 +495,36 @@ class MyLinkedList(object):
             head.next = list2
       return start.next
 
+   def rotateRight(self, head, k):
+      """
+      :type head: Optional[ListNode]
+      :type k: int
+      :rtype: Optional[ListNode]
+      """
+      if not head or not head.next or k == 0: return head
+
+      length = 0
+      curr = head
+      while curr:
+         curr = curr.next
+         length += 1
+      
+      k = k % length 
+
+      f = head
+      s = head
+      for i in range(k):
+         f = f.next
+      
+      while f.next:
+         f = f.next
+         s = s.next
+
+      f.next = head
+      newHead = s.next
+      s.next = None
+      return newHead
+
    
 
    
