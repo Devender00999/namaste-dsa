@@ -479,7 +479,7 @@ class MyLinkedList(object):
    # You are given the heads of two sorted linked lists list1 and list2.
    # T(n): O(n); S(n): O(1)
    def mergeTwoLists(self, list1, list2):
-      head = Node()
+      head = Node(0)
       start = head
       while list1 and list2:
             if list1.val < list2.val:
@@ -527,9 +527,33 @@ class MyLinkedList(object):
    
    # Given a linked list, swap every two adjacent nodes and return its head. 
    # You must solve the problem without modifying the values in the list's nodes (i.e., only nodes themselves may be changed.)
-   def swapPair(head):
-      if not head or not head.next: return head
+   # d -> 1 -> 2 -> 3 -> 4
+   # p    c    n 
+   # 2 -> 1 -> 3 -> 4
+   # n    c    n
+   # c => n.next
+   # n => c
+   # p => c
+   def swapPair(self, head):
+      if not head or not head.next: return head  
+      
+      dummy = Node(0)
+      dummy.next = head
+      
+      p = dummy
+      c = head
+      n = head.next
 
+      while c and n:      
+         c.next = n.next
+         n.next = c
+         p.next = n
+         
+         p = c
+         c = p.next
+         n = c and c.next
+      
+      return dummy.next
    
 
    
@@ -553,7 +577,8 @@ def print_linked_list(head: Node):
 
 # obj.reverse_list(obj.head)
 print_linked_list(obj.head)
-print(print_linked_list(obj.removeNthFromEnd(obj.head, 0)))
+# print(print_linked_list(obj.removeNthFromEnd(obj.head, 0)))
+print_linked_list(obj.swapPair(obj.head))
 # obj.print_linked_list(obj.head)
 # obj.removeElementsV2(obj.head, 1)
 

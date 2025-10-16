@@ -1,2 +1,1 @@
-linked_list(obj.head)
-      # obj.print_
+Node(0)
