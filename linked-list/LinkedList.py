@@ -555,6 +555,16 @@ class MyLinkedList(object):
       
       return dummy.next
    
+   def swapPairV2(self, head):
+      if not head or not head.next: return head
+      l = head
+      r = head.next
+      
+      l.next = self.swapPairV2(r.next)
+      r.next = l
+      return r
+
+   
 
    
 
@@ -579,6 +589,7 @@ def print_linked_list(head: Node):
 print_linked_list(obj.head)
 # print(print_linked_list(obj.removeNthFromEnd(obj.head, 0)))
 print_linked_list(obj.swapPair(obj.head))
+print_linked_list(obj.swapPairV2(obj.head))
 # obj.print_linked_list(obj.head)
 # obj.removeElementsV2(obj.head, 1)
 
