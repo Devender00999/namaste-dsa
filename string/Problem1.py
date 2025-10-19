@@ -11,7 +11,7 @@ def lengthOfLastWord(s):
       if s[i] != ' ':
             count += 1
             isWord = True
-      if isWord and s[i] == ' ':
+      elif count >=0 :
             break
    return count
 
@@ -27,3 +27,14 @@ def lengthOfLastWordV2(s):
       count += 1
    return count
 
+# T(n): O(n); S(n): O(1)
+def lengthOfLastWordV3(s):
+   n = len(s) -  1
+   count = 0
+   while n >= 0:
+      if s[n] != ' ':
+         count +=1 
+      elif count > 0:
+         break
+      n -= 1
+   return count
