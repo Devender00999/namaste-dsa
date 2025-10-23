@@ -13,9 +13,8 @@
 # The output is 2 + 4 = 6.
 
 
-def maxFreqSum(self, s):
-   v = set(['a', 'e', 'i', 'o', 'u'])
-   c = set(['b', 'c', 'd', 'f','g','h','j', 'k', 'l','m', 'n','p','q','r','s','t','v','w','x','y','z'])
+def maxFreqSum(s):
+   v = set(['a', 'e', 'i', 'o', 'u']) 
    vowels = {}
    consonants = {}
    for i in list(s):
@@ -24,8 +23,7 @@ def maxFreqSum(self, s):
                vowels[i] = vowels.get(i) + 1
             else:
                vowels[i] = 1
-      
-      if i in c:
+      else:
             if consonants.get(i):
                consonants[i] = consonants.get(i) + 1
             else:
