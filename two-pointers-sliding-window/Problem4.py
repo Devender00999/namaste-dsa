@@ -19,7 +19,7 @@ def strStr(self, haystack: str, needle: str) -> int:
             if y == len(needle):
                return i
    return -1
-
+  
 # T(n): O(n*m); S(n): O(1)
 def strStr(haystack: str, needle: str) -> int:
    m, n = len(haystack), len(needle)
@@ -32,3 +32,5 @@ def strStr(haystack: str, needle: str) -> int:
       if j == n:
             return i
    return -1
+
+# KMP algorithm
