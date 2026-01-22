@@ -35,5 +35,18 @@ def preorderTraversal(root: TreeNode, arr: List[int]):
    preorderTraversal(root.left, arr)
    preorderTraversal(root.right, arr)
    return arr
-   
+
+def preorderTraversalIterative(root: TreeNode):
+   ans = []
+   stack = []
+   stack.append(root)
+   while len(stack) > 0:
+      curr = stack.pop()
+      if (curr):
+         stack.append(curr.right)
+         stack.append(curr.left)
+         ans.append(curr.val)
+   return ans
+
 print(preorderTraversal(root, []))
+print(preorderTraversalIterative(root))
