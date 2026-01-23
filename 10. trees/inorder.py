@@ -37,3 +37,19 @@ def inorderTraversal(root: TreeNode, arr: List[int]):
    return arr
    
 print(inorderTraversal(root, []))
+
+def inorderTraversalIterative(root: TreeNode):
+   stack = []
+   ans = []
+   curr = root
+   while curr or len(stack):
+      while curr:
+         stack.append(curr)
+         curr = curr.left
+      curr = stack.pop()
+      ans.append(curr.val)
+      curr = curr.right
+
+print(inorderTraversal(root, []))
+print(inorderTraversalIterative(root))
+         
