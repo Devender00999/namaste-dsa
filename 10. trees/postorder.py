@@ -50,6 +50,23 @@ def postOrderTraversalIterative(root: TreeNode):
    while len(s2):
       ans.append(s2.pop().val)
    return ans
-   
+
+def postOrderTraversalWithOneArray(root: TreeNode):
+   curr = root
+   stack = []
+   lastVisited = None
+   ans = []
+   while curr or len(stack):
+      while curr:
+         stack.append(curr)
+         curr = curr.left
+      peek:TreeNode = stack[-1]
+      if peek.right and peek.right != lastVisited:
+         curr = peek.right
+      else:
+         ans.append(peek.val)
+         lastVisited = stack.pop()
+   return ans
 print(postorderTraversal(root, []))
 print(postOrderTraversalIterative(root))
+print(postOrderTraversalWithOneArray(root))
