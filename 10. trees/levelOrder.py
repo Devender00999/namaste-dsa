@@ -53,5 +53,17 @@ def levelOrder(root: TreeNode):
       curr.right and q1.append(curr.right)
    return ans
 
+def traversal(curr: TreeNode, level, ans):
+      if len(ans) == level: ans.append([])
+      ans[level].append(curr.val)
+      curr.left and traversal(curr.left, level + 1, ans)
+      curr.right and traversal(curr.right, level + 1, ans)
+      
+def levelOrderRecursive(root: TreeNode):
+   if not root: return []
+   ans = []
+   traversal(root, 0, ans)
+   return ans
 print(levelOrderWithArray(root))
 print(levelOrder(root))
+print(levelOrderRecursive(root))
