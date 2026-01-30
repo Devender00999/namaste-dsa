@@ -28,3 +28,12 @@ def traverse(self, curr, targetSum, currSum):
    if curr.right:
       pathSumRight = self.traverse(curr.right, targetSum, currSum + curr.val)
    return pathSumRight or pathSumLeft
+
+def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
+   if not root: return False
+   if not root.left and not root.right:
+      return root.val == targetSum
+   hasLeftSum = self.hasPathSum(root.left, targetSum - root.val)
+   hasRightSum = self.hasPathSum(root.right, targetSum - root.val)
+
+   return hasLeftSum or hasRightSum
