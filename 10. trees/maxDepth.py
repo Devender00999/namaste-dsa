@@ -9,7 +9,7 @@ def traverse2(root: TreeNode, depth):
    return max(depth1, depth2)
 
 # Top down approach
-def maxDepth(root):
+def maxDepthTopDown(root):
    maxDepth = 0
    def traverse2(root: TreeNode, depth):
       maxDepth = max(maxDepth, depth)
@@ -19,8 +19,8 @@ def maxDepth(root):
    return maxDepth
    
 # Bottom up aaproach
-def maxDepth(root: Optional[TreeNode]) -> int:
+def maxDepthBottomUp(root: Optional[TreeNode]) -> int:
    if not root: return 0
-   leftMax = maxDepth(root.left)
-   rightMax = maxDepth(root.right)
+   leftMax = maxDepthBottomUp(root.left)
+   rightMax = maxDepthBottomUp(root.right)
    return 1 + max(leftMax , rightMax)
