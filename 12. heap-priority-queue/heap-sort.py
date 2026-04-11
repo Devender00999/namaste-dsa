@@ -27,9 +27,9 @@ def heapifyDown(arr, i, n):
 
 def heapSort(arr):
    
-   for i in range(len(arr), -1, -1):
-      heapifyDown(arr, i, len(arr))
    n = len(arr)
+   for i in range(n // 2, -1, -1):
+      heapifyDown(arr, i, n)
    
    for i in range(n):
       arr[n - i - 1],arr[0] = arr[0],arr[n - i - 1]
