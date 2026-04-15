@@ -1,4 +1,5 @@
 from queue import PriorityQueue
+from typing import List
 
 
 class KthLargest:
@@ -14,3 +15,5 @@ class KthLargest:
         if self.minHeap.qsize() > self.k:
             self.minHeap.get()
         return self.minHeap.queue[0]
+     
+     
