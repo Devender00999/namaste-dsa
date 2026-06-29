@@ -1,0 +1,22 @@
+var candy = function (ratings) {
+   let ltr = Array(ratings.length).fill(1);
+   let rtl = Array(ratings.length).fill(1);
+
+   for (let i = 1; i < ratings.length; i++) {
+      if (ratings[i - 1] < ratings[i]) {
+         ltr[i] = ltr[i - 1] + 1;
+      }
+   }
+
+   for (let i = ratings.length - 2; i >= 0; i--) {
+      if (ratings[i + 1] < ratings[i]) {
+         rtl[i] = rtl[i + 1] + 1;
+      }
+   }
+   console.log(rtl, ltr);
+   let candies = 0;
+   for (let i = 0; i < ratings.length; i++) {
+      candies += Math.max(ltr[i], rtl[i]);
+   }
+   return candies;
+};
