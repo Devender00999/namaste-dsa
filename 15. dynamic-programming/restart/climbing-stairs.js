@@ -16,5 +16,20 @@ var climbingStairs = function (n) {
    return dp[n];
 };
 
-console.log(climbStairs(13));
-console.log(climbingStairs(13));
+// console.log(climbStairs(13));
+
+var climbStairs = function (n) {
+   const dp = {};
+   function climb(i) {
+      if (i == n) return 1;
+      if (i > n) return 0;
+      if (!dp[i]) {
+         dp[i] = climb(i + 1) + climb(i + 2);
+      }
+      return dp[i];
+   }
+   return climb(0);
+};
+
+console.log(climbingStairs(200));
+console.log(climbStairs(200));
