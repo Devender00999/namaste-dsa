@@ -1,5 +1,6 @@
 var letterCombinations = function (digits) {
    const digitMapping = {
+      0: ".;",
       2: "abc",
       3: "def",
       4: "ghi",
